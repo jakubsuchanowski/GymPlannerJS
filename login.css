@@ -1,0 +1,15 @@
+.container {
+    max-width: 400px; /* Zmniejszenie szerokości dla formularzy */
+}
+
+h1 {
+    font-size: 24px;
+}
+
+button {
+    background-color: #007bff;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

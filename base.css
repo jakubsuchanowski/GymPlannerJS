@@ -1,0 +1,167 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 0;
+  margin:0;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table, th, td {
+  border: 1px solid #dddddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  margin: 10px;
+}
+
+/* Nawigacja */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between; /* Rozdziel elementy na lewą i prawą stronę */
+  align-items: center;
+  position: sticky; /* Przykleja navbar na górze */
+  top: 0; /* Przylega do górnej części strony */
+  z-index: 1000; /* Ustawia z-index, aby był na wierzchu */
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
+
+.navbar-links {
+  display: flex; /* Umożliwia wyrównanie linków w poziomie */
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none; /* Usuwa podkreślenie */
+  padding: 10px 15px; /* Dodaje odstęp wewnętrzny */
+  transition: background 0.3s; /* Płynne przejście dla efektów hover */
+}
+
+.navbar-links a:hover {
+  background-color: #575757; /* Zmienia tło przy najechaniu */
+}
+
+#logout-button {
+  background-color: #f44336; /* Czerwony przycisk */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#logout-button:hover {
+  background-color: #d32f2f; /* Ciemniejszy odcień przy najechaniu */
+}
+#day-selection-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.checkbox-container {
+  display: flex; /* Ustawia kontener w elastycznym układzie */
+  flex-wrap: wrap; /* Pozwala na zawijanie elementów */
+  margin-bottom: 20px; /* Dodaje odstęp poniżej kontenera */
+}
+
+.checkbox-container label {
+  margin-right: 15px; /* Dodaje odstęp między etykietami */
+}
+.radio-group {
+  display: flex; /* Use flexbox to align items in a row */
+  align-items: center; /* Center items vertically */
+}
+
+.radio-group label {
+  margin-right: 20px; /* Space between radio options */
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 5px; /* Space between the radio button and its label */
+}

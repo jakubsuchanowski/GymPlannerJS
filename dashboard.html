@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="base.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <h1>Witaj w GymPlanner</h1>
+        <h2>Twoje plany ćwiczeń</h2>
+        <table id="workout-plans-table">
+            <thead>
+                <tr>
+                    <th>Nazwa Planu</th>
+                    <th>Ćwiczenia</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="workout-plans-list">
+               
+            </tbody>
+        </table>
+        <button id="add-plan-button">Dodaj nowy plan</button>
+    </div>
+<!-- Modal do wyboru dni tygodnia -->
+<div id="day-selection-modal" style="display: none;">
+    <div class="modal-content">
+        <h3>Wybierz dni tygodnia</h3>
+        <form id="day-selection-form">
+            <div class="checkbox-container">
+                <label><input type="checkbox" name="days" value="Poniedziałek"> Poniedziałek</label>
+                <label><input type="checkbox" name="days" value="Wtorek"> Wtorek</label>
+                <label><input type="checkbox" name="days" value="Środa"> Środa</label>
+                <label><input type="checkbox" name="days" value="Czwartek"> Czwartek</label>
+                <label><input type="checkbox" name="days" value="Piątek"> Piątek</label>
+                <label><input type="checkbox" name="days" value="Sobota"> Sobota</label>
+                <label><input type="checkbox" name="days" value="Niedziela"> Niedziela</label>
+            </div>
+            <button type="submit">Zatwierdź</button>
+            <button type="button" id="close-modal">Anuluj</button>
+        </form>
+    </div>
+</div>
+
+    <script src="components/Dashboard.js"></script>
+    <script src="components/navbar.js" defer></script>
+</body>
+</html>

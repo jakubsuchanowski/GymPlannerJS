@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj Plan Zajęć</title>
+    <link rel="stylesheet" href="base.css">
+    
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <h1>Dodaj Nowy Plan Zajęć</h1>
+        <form id="add-plan-form">
+            <label for="plan-name">Nazwa Planu:</label>
+            <input type="text" id="plan-name" name="plan-name" required>
+            <div>
+                <form>
+                <div class="radio-group">
+                    <label><input type="radio" name="option" value="CHEST">CHEST</label>
+                    <label><input type="radio" name="option" value="ABS">ABS</label>
+                    <label><input type="radio" name="option" value="LEGS">LEGS</label>
+                    <label><input type="radio" name="option" value="BACK">BACK</label>
+                    <label><input type="radio" name="option" value="SHOULDERS">SHOULDERS</label>
+                    <label><input type="radio" name="option" value="ARMS">ARMS</label>
+                </div>
+                <button type="button" id="bodypart-filter-button">Filtruj</button>
+            </form>
+                <label for="exercise-select">Wybierz Ćwiczenia:</label>
+                <select id="exercise-select">
+                   <!-- ćwiczenia -->
+                </select>
+                <button type="button" id="add-exercise-button">Dodaj ćwiczenie</button>
+                <ul id="selected-exercises-list"></ul>
+                <button type="submit">Dodaj Plan</button>
+            </div>
+           
+        </form>
+        <button id="back-button">Powrót</button>
+    </div>
+    
+    <script src="components/AddPlan.js"></script>
+    <script src="/components/navbar.js" defer></script>
+</body>
+</html>
