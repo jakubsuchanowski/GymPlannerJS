@@ -32,7 +32,7 @@ function loadWorkoutPlans() {
     plansList.innerHTML = ''; 
 
     for (const plan of data) {
-        const exercisesList = plan.exercises.map(exercise => exercise.name || 'Nie podano nazwy').join(', ');
+        const exercisesList = plan.exercises.map(exercise => `${exercise.name}, Reps: ${exercise.reps || ''}, Series: ${exercise.series||''} ` || 'Nie podano nazwy').join(', ');
         const daysList = await getDaysForPlan(plan.id);
 
         const tr = document.createElement('tr');
@@ -43,7 +43,9 @@ function loadWorkoutPlans() {
                 <td>${plan.name}</td>
                 <td>${exercisesList}</td>
                 <td>${daysString}</td>
-                <td><button class="edit-days-button" data-plan-id="${plan.id}">Edytuj Dni</button></td>
+                <td class=button-column><button class="edit-days-button" data-plan-id="${plan.id}">Edytuj Dni</button>
+                <button class="edit-plan-button" plan-id="${plan.id}">Edytuj plan</button>
+                <button class="delete-plan-button" plan-id="${plan.id}">Usuń plan</button></td>
             `;
         } else {
             
@@ -51,25 +53,45 @@ function loadWorkoutPlans() {
                 <td>${plan.name}</td>
                 <td>${exercisesList}</td>
                 <td>Brak przypisanych dni</td>
-                <td><button class="assign-day-button" data-plan-id="${plan.id}">Przypisz Dzień</button></td>
+                <td class=button-column><button class="assign-day-button" data-plan-id="${plan.id}">Przypisz Dzień</button>
+                <button class="edit-plan-button" plan-id="${plan.id}">Edytuj plan</button>
+                <button class="delete-plan-button" plan-id="${plan.id}">Usuń plan</button></td>
+                
             `;
         }
         plansList.appendChild(tr);
     }
 
-      const assignButtons = document.querySelectorAll('.assign-day-button');
-      assignButtons.forEach(button => {
+      const assignDaysButton = document.querySelectorAll('.assign-day-button');
+      assignDaysButton.forEach(button => {
         button.addEventListener('click', function () {
           const planId = this.getAttribute('data-plan-id');
           openDaySelectionModal(planId); 
         });
       });
-      const editButtons = document.querySelectorAll('.edit-days-button');
-      editButtons.forEach(button => {
+      const editDaysButton = document.querySelectorAll('.edit-days-button');
+      editDaysButton.forEach(button => {
           button.addEventListener('click', function () {
               const planId = this.getAttribute('data-plan-id');
               openDayEditModal(planId); 
           });
+      });
+
+      const editPlanButton = document.querySelectorAll('.edit-plan-button');
+      editPlanButton.forEach(button=>{
+        button.addEventListener('click', function(){
+          const planId=this.getAttribute('plan-id');
+          //tu miejsce na otworzenie edycji planu
+        })
+      });
+
+      const deletePlanButton= document.querySelectorAll('.delete-plan-button');
+      deletePlanButton.forEach(button=>{
+        button.addEventListener('click',function(){
+          const planId=this.getAttribute('plan-id');
+          deletePlan(planId);
+
+        })
       });
     })
    .catch(error => {
@@ -170,7 +192,7 @@ function updateDaysForPlan(planId, selectedDays) {
           alert('Dni zostały zaktualizowane.');
           loadWorkoutPlans(); 
           document.querySelectorAll('input[name="days"]').forEach(input => {
-            input.checked = false; // Ustaw wszystkie checkboxy na niezaznaczone
+            input.checked = false; 
         });
       } else {
           throw new Error('Błąd podczas aktualizacji dni.');
@@ -206,4 +228,27 @@ function getDaysForPlan(planId) {
       console.error('Błąd:', error);
       return [];
   });
+}
+
+function deletePlan(planId){
+  const userToken = localStorage.getItem('token');
+  console.log(planId);
+  console.log(userToken);
+  fetch (`http://localhost:8080/workoutplan/delete/${planId}`,{
+    method: 'DELETE',
+    headers: {
+      'Authorization': 'Bearer ' + userToken
+    }
+  })
+  .then(response=>{
+    if(response.ok){
+      alert('Dni został usunięty.');
+      loadWorkoutPlans();
+      
+    }
+  })
+  .catch(error => {
+    alert(error.message);
+    console.error('Błąd:', error);
+});
 }

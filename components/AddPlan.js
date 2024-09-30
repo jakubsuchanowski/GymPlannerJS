@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const addPlanForm = document.getElementById('add-plan-form');
     const addExerciseButton = document.getElementById('add-exercise-button');
     const selectedExercisesList = document.getElementById('selected-exercises-list')
-    const filterButton=documnt.getElementById('bodypart-filter-button')
+    const filterButton=document.getElementById('bodypart-filter-button')
 
     // Ładowanie ćwiczeń
     loadExercises();
-    loadFilterExercises();
+    
 
     // Obsługa powrotu do dashboardu
     backButton.addEventListener('click', function() {
@@ -24,8 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
         addExercise();
     });
 
+    filterButton.addEventListener('click',function(){
+        loadFilterExercises();
+    });
+
 
     function loadFilterExercises(){
+        const selectedBodyPart=getSelectedBodyPart();
         if (!selectedBodyPart) {
             alert('Proszę wybrać partię ciała.');
             return;
@@ -39,36 +44,36 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(response=>{
         if (response.ok) {
+            console.log(encodeURIComponent(selectedBodyPart));
             return response.json();
         } else {
             throw new Error('Nie udało się załadować ćwiczeń.');
         }
     })
     .then(data => {
-        const exerciseSelect = document.getElementById('exercise-select');
+        const exerciseSelect=document.getElementById('exercise-select');
+        exerciseSelect.innerHTML='';
+        console.log('Dane ćwiczeń:', data);
         data.forEach(exercise => {
             const option = document.createElement('option');
             option.value = exercise.id;
-            option.textContent = exercise.name,exercise.reps,exercise.series ? exercise.name : 'Nie podano nazwy';                
+            option.textContent = exercise.name ? `${exercise.name}, Reps: ${exercise.reps || ''}, Series: ${exercise.series || ''}` : 'Nie podano nazwy';
             exerciseSelect.appendChild(option);
-            
         });
     })
+}
     function getSelectedBodyPart() {
         // Assuming you have radio buttons for body parts
-        const bodyParts = document.getElementsByName('bodyPart'); // Replace with your input name
+        const bodyParts = document.getElementsByName('bodyPart'); 
         for (const part of bodyParts) {
             if (part.checked) {
-                return part.value; // Return the value of the checked radio button
+                console.log("Selected body part:", part.value); 
+                return part.value; 
             }
         }
-        return null; // Return null if no body part is selected
+        return null;
     }
     
-    // Event listener to trigger filtering when a radio button is selected
-    document.querySelectorAll('input[name="bodyPart"]').forEach(radio => {
-        radio.addEventListener('change', loadFilterExercises);
-    });
 
     function loadExercises() {
         fetch('http://localhost:8080/exercise/show', {
@@ -90,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             data.forEach(exercise => {
                 const option = document.createElement('option');
                 option.value = exercise.id;
-                option.textContent = exercise.name,exercise.reps,exercise.series ? exercise.name : 'Nie podano nazwy';                
+                option.textContent = exercise.name ? `${exercise.name}, Reps: ${exercise.reps || ''}, Series: ${exercise.series || ''}` : 'Nie podano nazwy';
                 exerciseSelect.appendChild(option);
             });
         })

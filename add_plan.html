@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dodaj Plan Zajęć</title>
     <link rel="stylesheet" href="base.css">
+    <script src="components/auth.js"></script>
     
 </head>
 <body>
@@ -16,13 +17,13 @@
             <input type="text" id="plan-name" name="plan-name" required>
             <div>
                 <form>
-                <div class="radio-group">
-                    <label><input type="radio" name="option" value="CHEST">CHEST</label>
-                    <label><input type="radio" name="option" value="ABS">ABS</label>
-                    <label><input type="radio" name="option" value="LEGS">LEGS</label>
-                    <label><input type="radio" name="option" value="BACK">BACK</label>
-                    <label><input type="radio" name="option" value="SHOULDERS">SHOULDERS</label>
-                    <label><input type="radio" name="option" value="ARMS">ARMS</label>
+                <div class="radio-group-bodypart">
+                    <label><input type="radio" name="bodyPart" value="CHEST">CHEST</label>
+                    <label><input type="radio" name="bodyPart" value="ABS">ABS</label>
+                    <label><input type="radio" name="bodyPart" value="LEGS">LEGS</label>
+                    <label><input type="radio" name="bodyPart" value="BACK">BACK</label>
+                    <label><input type="radio" name="bodyPart" value="SHOULDERS">SHOULDERS</label>
+                    <label><input type="radio" name="bodyPart" value="ARMS">ARMS</label>
                 </div>
                 <button type="button" id="bodypart-filter-button">Filtruj</button>
             </form>
@@ -31,12 +32,12 @@
                    <!-- ćwiczenia -->
                 </select>
                 <button type="button" id="add-exercise-button">Dodaj ćwiczenie</button>
-                <ul id="selected-exercises-list"></ul>
-                <button type="submit">Dodaj Plan</button>
+                <ul class="selected-exercises-list" id="selected-exercises-list"></ul>
+                <button class="add-plan" type="submit">Dodaj Plan</button>
             </div>
            
         </form>
-        <button id="back-button">Powrót</button>
+        <button class="back-button" id="back-button">Powrót</button>
     </div>
     
     <script src="components/AddPlan.js"></script>

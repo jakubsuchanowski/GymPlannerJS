@@ -165,3 +165,62 @@ button {
 .radio-group input[type="radio"] {
   margin-right: 5px; /* Space between the radio button and its label */
 }
+
+.edit-days-button{
+  background-color: rgb(39, 39, 182);
+  border-radius: 5px;
+  width: auto; 
+  height: 40px;
+}
+.edit-plan-button{
+  background-color: rgb(169, 169, 5);
+  border-radius: 5px;
+  width: auto; 
+  height: 40px;
+}
+.delete-plan-button{
+  background-color: #d32f2f;
+  border-radius: 5px;
+  width: auto; 
+  height: 40px;
+}
+.assign-day-button{
+  background-color: rgb(39, 39, 182);
+  border-radius: 5px;
+  width: auto; 
+  height: 40px;
+}
+.edit-days-button:hover{
+  background-color: rgb(6, 6, 93);
+  
+}
+.edit-plan-button:hover{
+  background-color: rgb(102, 102, 6);
+  }
+  
+.delete-plan-button:hover{
+  background-color: #9f2525;
+}
+.assign-day-button:hover{
+  background-color: rgb(6, 6, 93);
+}
+
+.button-column{
+  width: 350px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#close-modal{
+  background-color: #c83131;
+}
+#bodypart-filter-button{
+  background-color: rgb(76, 65, 204);
+}
+#back-button{
+  background-color: #c83131;
+}
+.radio-group-bodypart{
+  display: flex; 
+            
+}
